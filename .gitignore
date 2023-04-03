@@ -1,0 +1,10 @@
+.idea
+.DS_Store
+
+*.swp
+*.swo
+
+.test
+*.log
+example
+
