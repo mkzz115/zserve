@@ -6,7 +6,6 @@ import (
     "github.com/julienschmidt/httprouter"
     "net/http"
     "time"
-    "zserve/common/confutil"
     "zserve/common/log"
 )
 
@@ -24,15 +23,15 @@ type ZServe struct {
     Addr          string
     //
     processor Processor
-    fn        func(DependsServer) error
-    cfg       *confutil.Config
+    fn        func(Configer) error
+    cfg       Configer
 }
 
-func (t *ZServe) Init(cfg *confutil.Config, fn func(DependsServer) error, p Processor) error {
+func (t *ZServe) Init(cfger Configer, fn func(Configer) error, p Processor) error {
     log.Info("ZServe.Init called")
     t.processor = p
     t.fn = fn
-    t.cfg = cfg
+    t.cfg = cfger
     return nil
 }
 
@@ -41,8 +40,7 @@ func (t *ZServe) Start() error {
     // init depends serve
     if t.cfg != nil {
         //
-        ds := NewDepServe(&t.cfg.Depends)
-        err := t.fn(ds)
+        err := t.fn(t.cfg)
         if err != nil {
             return err
         }

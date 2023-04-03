@@ -1,7 +1,5 @@
 package zserve
 
-import "zserve/common/confutil"
-
 const (
 	PROCESSOR_THRIFT = "thrift"
 	PROCESSOR_HTTP   = "http"
@@ -9,6 +7,6 @@ const (
 
 type Serve interface {
 
-	Init(*confutil.Config, func(DependsServer) error, Processor) error
+	Init(Configer, func(Configer) error, Processor) error
 	Start() error
 }

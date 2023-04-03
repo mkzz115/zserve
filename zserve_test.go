@@ -20,7 +20,7 @@ func TestZServe_Start(t *testing.T) {
 
 
 func test_thrift(t *testing.T) {
-	fn := func(server DependsServer) error {
+	fn := func(cf Configer) error {
 		t.Log("fnnnnnnn")
 		return nil
 	}
@@ -79,7 +79,7 @@ func (p *thriftServe) Driver() (string, interface{}) {
 }
 
 func test_http(t *testing.T) {
-	fn := func(server DependsServer) error {
+	fn := func(cf Configer) error {
 		t.Log("fnnnnnnn")
 		return nil
 	}

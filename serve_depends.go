@@ -9,19 +9,19 @@ import (
 
 type DependsServer interface {
 	GenId() (int64, error)
-	DbInstance() *sqlx.DB
+	//DbInstance() *sqlx.DB
 }
 
-func NewDepServe(cfg *confutil.DependServeConfig) DependsServer {
+func NewDepServe(dfger DepConfiger) DependsServer {
 	ds := &dependsDerve{
-		cfg: cfg,
+		cfg: dfger.GetConfig().GetConfig(),
 	}
 	ds.idgen = idgenutil.NewIdWorker()
 	return ds
 }
 
 type dependsDerve struct {
-	cfg   *confutil.DependServeConfig
+	cfg   *confutil.Config
 	idgen idgenutil.IdGenerator
 }
 
@@ -30,10 +30,10 @@ func (d *dependsDerve) GenId() (int64, error) {
 }
 
 func (d *dependsDerve) DbInstance() *sqlx.DB {
-	if len(d.cfg.MysqlConfig.Dsn) == 0 {
+	if len(d.cfg.Depends.MysqlConfig.Dsn) == 0 {
 		return nil
 	}
-	db, err := sqlx.Open("mysql", d.cfg.MysqlConfig.Dsn)
+	db, err := sqlx.Open("mysql", d.cfg.Depends.MysqlConfig.Dsn)
 	if err != nil {
 		panic(err)
 	}
