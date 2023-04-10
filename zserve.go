@@ -28,7 +28,7 @@ type ZServe struct {
 }
 
 func (t *ZServe) Init(cfger Configer, fn func(Configer) error, p Processor) error {
-    log.Info("ZServe.Init called")
+    log.Debug("ZServe.Init called")
     t.processor = p
     t.fn = fn
     t.cfg = cfger
@@ -36,7 +36,7 @@ func (t *ZServe) Init(cfger Configer, fn func(Configer) error, p Processor) erro
 }
 
 func (t *ZServe) Start() error {
-    log.Info("ZServe.Init called")
+    log.Debug("ZServe.Init called")
     // init depends serve
     if t.cfg != nil {
         //
@@ -62,7 +62,7 @@ func (t *ZServe) Start() error {
 }
 
 func (t *ZServe) serveThrift(addr string, processor thrift.TProcessor) error {
-    log.Info("ThriftServer.Init called")
+    log.Debug("ThriftServer.Init called")
     //handler := NewHelloServe()
     //process := hello.NewHelloServiceProcessor(handler)
 

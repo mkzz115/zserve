@@ -5,6 +5,7 @@
 *.swo
 
 .test
+test.log.*
 *.log
 example
 
