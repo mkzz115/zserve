@@ -7,7 +7,7 @@ import (
 	"flag"
 	"fmt"
 	"git.apache.org/thrift.git/lib/go/thrift"
-	"zserve/common/pub/idl/gen-go/hello"
+	"github.com/mkzz115/zserve/common/pub/idl/gen-go/hello"
 	"math"
 	"net"
 	"net/url"

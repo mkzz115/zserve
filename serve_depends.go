@@ -3,8 +3,8 @@ package zserve
 import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
-	"zserve/common/confutil"
-	"zserve/common/idgenutil"
+	"github.com/mkzz115/zserve/common/confutil"
+	"github.com/mkzz115/zserve/common/idgenutil"
 )
 
 type DependsServer interface {

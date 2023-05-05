@@ -4,9 +4,10 @@ import (
     "fmt"
     "git.apache.org/thrift.git/lib/go/thrift"
     "github.com/julienschmidt/httprouter"
+    "github.com/mkzz115/zserve/common/log"
     "net/http"
     "time"
-    "zserve/common/log"
+
 )
 
 func NewZServer(name, addr string) *ZServe {

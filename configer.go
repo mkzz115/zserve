@@ -1,6 +1,6 @@
 package zserve
 
-import "zserve/common/confutil"
+import "github.com/mkzz115/zserve/common/confutil"
 
 type Configer interface {
     GetConfig() *confutil.Config

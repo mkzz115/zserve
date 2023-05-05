@@ -1,11 +1,11 @@
 package adapter
 
 import (
+	"github.com/mkzz115/zserve/common/confutil"
 	"time"
-	"zserve/common/confutil"
 
 	"git.apache.org/thrift.git/lib/go/thrift"
-	"zserve/common/pub/idl/gen-go/hello"
+	"github.com/mkzz115/zserve/common/pub/idl/gen-go/hello"
 )
 
 var (

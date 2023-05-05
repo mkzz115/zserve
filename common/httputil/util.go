@@ -1,10 +1,10 @@
 package httputil
 
 import (
+	"github.com/mkzz115/zserve/common/log"
 	"net/http"
 	"strings"
 	"time"
-	"zserve/common/log"
 )
 
 type HandleDecorator func(http.HandlerFunc) http.HandlerFunc

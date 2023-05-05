@@ -3,16 +3,17 @@ package zserve
 import (
 	"encoding/json"
 	"github.com/julienschmidt/httprouter"
+	"github.com/mkzz115/zserve/common/confutil"
+	"github.com/mkzz115/zserve/common/log"
+	"github.com/mkzz115/zserve/common/pub/adapter"
+	"github.com/mkzz115/zserve/common/pub/idl/gen-go/hello"
 	"io/ioutil"
 	"net/http"
 	"testing"
-	"zserve/common/confutil"
-	"zserve/common/log"
-	"zserve/common/pub/adapter"
-	"zserve/common/pub/idl/gen-go/hello"
 )
 
 func TestZServe_Start(t *testing.T) {
+
 	log.Init("./test.log")
 	go test_thrift(t)
 	test_http(t)

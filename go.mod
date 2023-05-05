@@ -1,4 +1,4 @@
-module zserve
+module github.com/mkzz115/zserve
 
 go 1.17
 

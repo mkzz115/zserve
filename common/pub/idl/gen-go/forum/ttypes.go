@@ -7,7 +7,7 @@ import (
 	"bytes"
 	"fmt"
 	"git.apache.org/thrift.git/lib/go/thrift"
-	"zserve/common/pub/idl/gen-go/base"
+	"github.com/mkzz115/zserve/common/pub/idl/gen-go/base"
 )
 
 // (needed to ensure safety because of naive import list construction.)

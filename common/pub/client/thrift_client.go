@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"git.apache.org/thrift.git/lib/go/thrift"
-	"zserve/common/confutil"
+	"github.com/mkzz115/zserve/common/confutil"
 )
 
 func NewThriftClient(cfg *confutil.ClientConfig) *ThriftClient {
