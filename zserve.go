@@ -55,8 +55,8 @@ func (t *ZServe) Start() error {
     switch d := driver.(type) {
     case *httprouter.Router:
         return t.serveHttp(t.Addr, d)
-    case *mux.Route:
-        return t.serveHttp(t.Addr, d.GetHandler())
+    case *mux.Router:
+        return t.serveHttp(t.Addr, d)
     case thrift.TProcessor:
         return t.serveThrift(t.Addr, d)
     default:
