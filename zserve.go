@@ -3,11 +3,11 @@ package zserve
 import (
     "fmt"
     "git.apache.org/thrift.git/lib/go/thrift"
+    "github.com/gorilla/mux"
     "github.com/julienschmidt/httprouter"
     "github.com/mkzz115/zserve/common/log"
     "net/http"
     "time"
-
 )
 
 func NewZServer(name, addr string) *ZServe {
@@ -55,6 +55,8 @@ func (t *ZServe) Start() error {
     switch d := driver.(type) {
     case *httprouter.Router:
         return t.serveHttp(t.Addr, d)
+    case *mux.Route:
+        return t.serveHttp(t.Addr, d.GetHandler())
     case thrift.TProcessor:
         return t.serveThrift(t.Addr, d)
     default:
@@ -85,12 +87,11 @@ func (t *ZServe) serveThrift(addr string, processor thrift.TProcessor) error {
     return server.Serve()
 }
 
-func (t *ZServe) serveHttp(addr string, router *httprouter.Router) error {
+func (t *ZServe) serveHttp(addr string, handle http.Handler) error {
     serv := &http.Server{
         Addr:              t.Addr,
-        Handler:           router,
+        Handler:           handle,
         ReadHeaderTimeout: 5 * time.Second,
     }
     return serv.ListenAndServe()
 }
-
